@@ -2,7 +2,7 @@ import {connectToDatabase} from "../../util/couchbase";
 import { v4 } from 'uuid';
 
 async function handler(req, res) {
-  const {cluster, profileCollection} = await connectToDatabase();
+  const {cluster, studentsCollection} = await connectToDatabase();
   // Parse the body only if it is present
   let body = !!req.body ? JSON.parse(req.body) : null;
 
@@ -21,7 +21,7 @@ async function handler(req, res) {
       pid: id,
       ...body,
     };
-    await profileCollection.insert(profile.pid, profile)
+    await studentsCollection.insert(profile.pid, profile)
         .then((result) => {
           res.status(201).send({...profile, ...result});
         })
@@ -41,7 +41,7 @@ async function handler(req, res) {
      *  PUT HANDLER
      */
     try {
-      await profileCollection.get(req.query.pid)
+      await studentsCollection.get(req.query.pid)
           .then(async (result) => {
             /* Create a New Document with new values,
               if they are not passed from request, use existing values */
@@ -53,7 +53,7 @@ async function handler(req, res) {
             };
 
             /* Persist updates with new doc */
-            await profileCollection.upsert(req.query.pid, newDoc)
+            await studentsCollection.upsert(req.query.pid, newDoc)
                 .then((result) => res.send({ ...newDoc, ...result }))
                 .catch((error) => {
                   if (error.message === 'authentication failure') {
@@ -106,7 +106,7 @@ async function handler(req, res) {
      *  DELETE HANDLER
      */
     try {
-      await profileCollection.remove(req.query.pid)
+      await studentsCollection.remove(req.query.pid)
           .then(() => {
             res.status(200).send({message: "Successfully Deleted: " + req.query.pid});
           })
