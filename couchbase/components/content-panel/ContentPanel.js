@@ -129,10 +129,9 @@ export const ContentPanel = ({
 
           <div className="flex-1 overflow-y-auto p-4 md:p-8 pt-16 md:pt-20 lg:pt-16 md:pl-24">
             <div className="max-w-5xl mx-auto">
-              <div className="text-center md:text-left mb-8">
+              <div className="text-center mt-5 md:text-left mb-8">
                 <h2 className="text-3xl md:text-4xl lg:text-5xl text-gray-100 font-light">
-                  {profile.firstName}
-                  <span className="font-bold ml-2">{profile.lastName}</span>
+                  {profile.firstName} {profile.lastName}
                 </h2>
                 <p className="text-lg md:text-xl text-gray-300 mt-2">
                   {profile.email}
@@ -150,15 +149,9 @@ export const ContentPanel = ({
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <p className="text-sm text-gray-400">First Name</p>
+                    <p className="text-sm text-gray-400">Full Name</p>
                     <p className="text-base text-gray-200">
-                      {profile.firstName}
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-400">Last Name</p>
-                    <p className="text-base text-gray-200">
-                      {profile.lastName}
+                      {profile.firstName} {profile.lastName}
                     </p>
                   </div>
                   <div className="md:col-span-2">

@@ -4,17 +4,17 @@ import Navbar from "../components/Navbar";
 export default function Home() {
   const teamMembers = [
     {
-      name: "Blaise Lorenz Bernabe",
+      name: "Blaise Lorenz T. Bernabe",
       role: "Hipster",
       image: "/lorenz.png",
     },
     {
-      name: "Arjay Nino Saguisa",
+      name: "Arjay Niño G. Saguisa",
       role: "Hacker",
       image: "/arjay.jpg",
     },
     {
-      name: "John Reddick Quijano",
+      name: "John Reddick F. Quijano",
       role: "Hustler",
       image: "/red.jpg",
     },
@@ -68,6 +68,24 @@ export default function Home() {
     { id: 7, src: "/7.png" },
   ];
 
+  // Add event listener for keyboard navigation
+  React.useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'ArrowRight') {
+        nextSlide();
+      } else if (event.key === 'ArrowLeft') {
+        prevSlide();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    // Cleanup event listener on component unmount
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [currentSlide]);
+
   return (
     <div className="min-h-screen bg-[#05061B]">
       <Navbar />
@@ -84,7 +102,7 @@ export default function Home() {
           </div>
           <h1 className="text-7xl font-bold mb-4 text-white">Couchbase</h1>
           <p className="text-xl text-gray-300 max-w-2xl mb-12">
-            Empowering Innovation Through Modern Database Solutions
+            Best Free NoSQL Cloud Database Platform
           </p>
 
           {/* Team Section */}
@@ -104,7 +122,7 @@ export default function Home() {
                         className="w-full h-full object-cover"
                       />
                     </div>
-                    <h3 className="text-xl font-semibold text-white">
+                    <h3 className="text-l font-semibold text-white">
                       {member.name}
                     </h3>
                     <p className="text-gray-400">{member.role}</p>
@@ -115,7 +133,7 @@ export default function Home() {
           </div>
 
           {/* Presentation Slide Section */}
-          <div className="mt-16">
+          <div className="mt-3">
             <h2 className="text-4xl font-bold mb-12 text-white">
               Presentation
             </h2>
