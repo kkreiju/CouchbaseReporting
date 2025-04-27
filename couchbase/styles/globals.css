@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind screens;
+@tailwind utilities;
+
+:root {
+  --font-poppins: "Poppins", sans-serif;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  font-family: var(--font-poppins);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-poppins);
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: var(--font-poppins);
+}
+
+/* Presentation slide custom curve shape */
+.clip-path-curve {
+  clip-path: polygon(0 0, 100% 0, 75% 100%, 0% 100%);
+}
